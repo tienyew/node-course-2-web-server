@@ -26,10 +26,10 @@ app.use(express.static(__dirname + '/public'));
 
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
-})
+});
 hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
-})
+});
 
 app.get('/', (req, res) => {
   // res.send('<h1>Hello Express!</h1>');
@@ -44,20 +44,26 @@ app.get('/', (req, res) => {
   res.render('root.hbs', {
     pageTitle: 'Home Page',
     welcomeMessage: 'Some text here.'
-  })
+  });
 });
 
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page'
   });
-})
+});
+
+// app.get('/projects', (req, res) => {
+//   res.render('projects.hbs', {
+//     pageTitle: 'Projects Page'
+//   });
+// });
 
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'Unable to fulfil request'
   })
-})
+});
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
